@@ -1,5 +1,5 @@
-import { Heading, VStack, Text, FormControl, FormLabel, Input, FormErrorMessage, Textarea, Button } from "@chakra-ui/react";
-import { useForm } from "react-hook-form";
+import { Heading, VStack, Text, FormControl, FormLabel, Input, FormErrorMessage, Textarea, Button, CheckboxGroup, Checkbox } from "@chakra-ui/react";
+import { useForm, Controller } from "react-hook-form";
 import { InferType } from 'yup';
 import { formValidator } from "../validator";
 import axios from 'axios';
@@ -11,6 +11,7 @@ export const ContactForm = () => {
   const {
     handleSubmit,
     register,
+    control,
     formState: { errors, isSubmitting },
   } = useForm<FormType>();
   const sendData = async (data) => {
@@ -88,6 +89,23 @@ export const ContactForm = () => {
           <FormErrorMessage>
             {errors.description && errors.description.message}
           </FormErrorMessage>
+        </FormControl>
+        <FormControl>
+          <Controller
+            name="services"
+            control={control}
+            render={({ field: { ref, ...rest } }) => (
+              <CheckboxGroup {...rest}>
+                <Checkbox value="first">first</Checkbox>
+                <Checkbox value="second">second</Checkbox>
+                <Checkbox value="last">last</Checkbox>
+              </CheckboxGroup>
+            )}
+            rules={{
+              required: { value: true, message: "Please select at least one" }
+            }}
+          />
+          <FormErrorMessage>{errors.checkboxes?.message}</FormErrorMessage>
         </FormControl>
         <Button textColor="white" background="#4A5364" marginTop="10px" width="350px" type="submit" >
           Send Message
