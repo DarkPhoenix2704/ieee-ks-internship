@@ -14,12 +14,10 @@ export const ContactForm = () => {
     formState: { errors, isSubmitting },
   } = useForm<FormType>();
   const sendData = async (data) => {
-    const res = axios.postForm("https://mint-forms.ieee-mint.org/api/form/addresponse?formld-task", qs.stringify(data), {
-      headers: {
-        "Content-Type": "x-www-form-urlencoded"
-      }
+    console.log(qs.stringify(data))
+    const res = axios.post("https://mint-forms.ieee-mint.org/api/form/addresponse?formld-task", qs.stringify(data), {
+      headers: { 'content-type': 'application/x-www-form-urlencoded' },
     }).then((re) => {
-      console.log(re)
       console.log(re.data)
     })
   };
