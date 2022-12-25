@@ -36,6 +36,8 @@ export const ContactForm = () => {
         <FormControl>
           <FormLabel htmlFor='name'>Name</FormLabel>
           <Input
+            backgroundColor="white"
+            border="2px solid rgba(0,0,0,0.95)"
             id='name'
             placeholder='Name'
             {...register('name')}
@@ -47,6 +49,10 @@ export const ContactForm = () => {
         <FormControl>
           <FormLabel htmlFor='email'>Email</FormLabel>
           <Input
+
+            backgroundColor="white"
+            border="2px solid rgba(0,0,0,0.95)"
+            width="350px"
             id='email'
             placeholder='Email'
             {...register('email')}
@@ -58,6 +64,9 @@ export const ContactForm = () => {
         <FormControl>
           <FormLabel htmlFor='phone'>Phone</FormLabel>
           <Input
+
+            backgroundColor="white"
+            border="2px solid rgba(0,0,0,0.95)"
             id='phone'
             placeholder='phone'
             {...register('phone')}
@@ -69,6 +78,9 @@ export const ContactForm = () => {
         <FormControl>
           <FormLabel htmlFor='description'>Description</FormLabel>
           <Textarea
+
+            backgroundColor="white"
+            border="2px solid rgba(0,0,0,0.95)"
             id='description'
             placeholder='description'
             {...register('description')}
@@ -77,7 +89,7 @@ export const ContactForm = () => {
             {errors.description && errors.description.message}
           </FormErrorMessage>
         </FormControl>
-        <Button type="submit" >
+        <Button textColor="white" background="#4A5364" marginTop="10px" width="350px" type="submit" >
           Send Message
         </Button>
       </form>
