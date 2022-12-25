@@ -14,7 +14,7 @@ export const ContactForm = () => {
     control,
     formState: { errors, isSubmitting },
   } = useForm<FormType>();
-  const sendData = async (data) => {
+  const sendData = async (data: any) => {
     console.log(qs.stringify(data))
     const res = axios.post("https://mint-forms.ieee-mint.org/api/form/addresponse?formld-task", qs.stringify(data), {
       headers: { 'content-type': 'application/x-www-form-urlencoded' },
@@ -96,16 +96,15 @@ export const ContactForm = () => {
             control={control}
             render={({ field: { ref, ...rest } }) => (
               <CheckboxGroup {...rest}>
-                <Checkbox value="first">first</Checkbox>
-                <Checkbox value="second">second</Checkbox>
-                <Checkbox value="last">last</Checkbox>
+                <Checkbox value="Website Design">Website Design</Checkbox>
+                <Checkbox value="Content Creation">Content Creation</Checkbox>
+                <Checkbox value="UX Design">UX Design</Checkbox>
+                <Checkbox value="Strategy & Consulting">Strategy & Consulting</Checkbox>
+                <Checkbox value="UX Research">UX Research</Checkbox>
+                <Checkbox value="Other">Other</Checkbox>
               </CheckboxGroup>
             )}
-            rules={{
-              required: { value: true, message: "Please select at least one" }
-            }}
           />
-          <FormErrorMessage>{errors.checkboxes?.message}</FormErrorMessage>
         </FormControl>
         <Button textColor="white" background="#4A5364" marginTop="10px" width="350px" type="submit" >
           Send Message
