@@ -1,4 +1,4 @@
-import { Heading, VStack, Text, FormControl, FormLabel, Input, FormErrorMessage, Textarea, Button, CheckboxGroup, Checkbox } from "@chakra-ui/react";
+import { Heading, VStack, Text, FormControl, FormLabel, Input, FormErrorMessage, Flex, Textarea, Button, CheckboxGroup, Checkbox } from "@chakra-ui/react";
 import { useForm, Controller } from "react-hook-form";
 import { InferType } from 'yup';
 import { formValidator } from "../validator";
@@ -12,7 +12,7 @@ export const ContactForm = () => {
     handleSubmit,
     register,
     control,
-    formState: { errors, isSubmitting },
+    formState: { errors },
   } = useForm<FormType>();
   const sendData = async (data: any) => {
     console.log(qs.stringify(data))
@@ -96,12 +96,14 @@ export const ContactForm = () => {
             control={control}
             render={({ field: { ref, ...rest } }) => (
               <CheckboxGroup {...rest}>
-                <Checkbox value="Website Design">Website Design</Checkbox>
-                <Checkbox value="Content Creation">Content Creation</Checkbox>
-                <Checkbox value="UX Design">UX Design</Checkbox>
-                <Checkbox value="Strategy & Consulting">Strategy & Consulting</Checkbox>
-                <Checkbox value="UX Research">UX Research</Checkbox>
-                <Checkbox value="Other">Other</Checkbox>
+                <Flex marginBlock="10px" flexWrap="wrap" columnGap="10px" rowGap="10px">
+                  <Checkbox value="Website Design">Website Design</Checkbox>
+                  <Checkbox value="Content Creation">Content Creation</Checkbox>
+                  <Checkbox value="UX Design">UX Design</Checkbox>
+                  <Checkbox value="Strategy & Consulting">Strategy & Consulting</Checkbox>
+                  <Checkbox value="UX Research">UX Research</Checkbox>
+                  <Checkbox value="Other">Other</Checkbox>
+                </Flex>
               </CheckboxGroup>
             )}
           />
@@ -111,6 +113,6 @@ export const ContactForm = () => {
         </Button>
       </form>
 
-    </VStack>
+    </VStack >
   );
 };
